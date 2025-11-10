@@ -1,0 +1,9 @@
+# IDE
+.idea/
+
+# Dữ liệu và file được tạo ra
+saved_models/
+visualization/
+
+# MacOS
+.DS_Store
