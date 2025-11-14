@@ -2,12 +2,7 @@
 
 > Predicting life expectancy across 200+ countries using machine learning models trained on World Bank demographic data (2000-2024)
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)](https://jupyter.org/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3.0-green)](https://scikit-learn.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Problem Statement](#problem-statement)
@@ -23,77 +18,72 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
-This project uses supervised learning to predict **life expectancy** based on demographic and socioeconomic indicators from the World Bank. We train multiple machine learning models on data from 2000-2023 and evaluate their performance by predicting life expectancy for 2024.
+This project uses supervised learning to predict **life expectancy** based on demographic and socioeconomic indicators from the World Bank. We train multiple machine learning models on data from 2000-2024 and evaluate their performance.
 
 **Key Highlights:**
-- 📊 **200+ countries** analyzed
-- 📅 **24 years** of historical data (2000-2024)
-- 🤖 **6+ ML algorithms** compared
-- 🎯 **Weighted ensemble** for final predictions
-- 📈 **Comprehensive EDA** with visualizations
+- **200+ countries** analyzed
+- **20+ years** of historical data (2000-2024)
+- **6+ ML algorithms** compared
+- **Weighted ensemble** for final predictions
+- **Comprehensive EDA** with visualizations
 
 ---
 
-## 🔬 Problem Statement
+## Problem Statement
 
 **Goal:** Predict life expectancy at birth for countries worldwide using demographic features.
 
 **Type:** Supervised Learning (Regression)
 
 **Approach:**
-1. Train models on historical data (2000-2023)
+1. Train models on historical data (2000-2024)
 2. Tune hyperparameters using K-Fold Cross-Validation
-3. Evaluate models on 2024 data (unseen test set)
-4. Compare actual vs predicted life expectancy
+3. Choose the best model based on the validation set
+4. Evaluate models on unseen test dataset 
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 ### Data Source
 - **World Bank Open Data** (https://data.worldbank.org/)
 - **Time Period:** 2000-2024
 - **Coverage:** 200+ countries
-- **Features:** 11 demographic and socioeconomic indicators
+- **Features:** 10+ demographic and socioeconomic indicators
 
 ### Features Used
 
-| Feature | Description | Unit |
-|---------|-------------|------|
-| **GDP per capita** | Gross Domestic Product per person | Current US$ |
-| **Population** | Total population | Count |
-| **Population growth** | Annual population growth rate | % |
-| **Poverty headcount** | Population living on <$3/day | % of population |
-| **Sanitation services** | Access to safely managed sanitation | % of population |
-| **Drinking water** | Access to basic drinking water | % of population |
-| **Electricity access** | Population with electricity access | % of population |
-| **Labor force participation** | Labor force participation rate | % ages 15+ |
-| **Urban slums** | Population living in slums | % of urban pop. |
-| **CO2 emissions** | Carbon dioxide emissions per capita | t CO2e/capita |
-| **GDP growth** | Annual GDP growth rate | % |
+- **Population, total** 
+- **Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)** 
+- **Population growth (annual %)** 
+- **GDP per capita (current US$)** 
+- **GDP growth (annual %)**
+- **People using safely managed sanitation services (% of population)**
+- **Access to electricity (% of population)** 
+- **People using at least basic drinking water services (% of population)**
+- **Carbon dioxide (CO2) emissions excluding LULUCF per capita (t CO2e/capita)**
+- **Population living in slums (% of urban population)** 
+- **Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)**
+- **Year**
 
 **Target Variable:** Life expectancy at birth (years)
 
 ### Data Split
-- **Training + Validation:** 90% (years 2000-2023)
-- **Test Set:** 10% (year 2024)
+- **Training Set:** 60%
+- **Validation Set:** 20% 
+- **Test Set:** 20% 
 
 ---
 
-## 🤖 Models
+## Models
 
 We implemented and compared the following machine learning algorithms:
 
-### 1. Linear Regression with L1 Regularization (Lasso)
-- **Purpose:** Feature selection and baseline model
-- **Regularization:** L1 penalty to eliminate less important features
+### 1. Linear Regression / Ridge / Lasso
+- **Regularization:** L1 or L2 penalty to eliminate less important features
 - **Hyperparameter Tuning:** K-Fold CV for optimal alpha
-
-### 2. Logistic Regression
-- **Purpose:** Classification variant (if needed)
-- **Regularization:** L1/L2 penalty
 
 ### 3. Decision Tree Regressor
 - **Purpose:** Non-linear relationships capture
