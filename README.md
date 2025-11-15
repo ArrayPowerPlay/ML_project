@@ -122,7 +122,7 @@ We implemented and compared the following machine learning algorithms:
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 ```txt
 # Core
@@ -148,7 +148,7 @@ jupytext>=1.15.0  # For .py ↔ .ipynb sync
 ```
 ---
 
-## 👥 Team Members
+## Team Members
 
 - **Trần Gia Định** (team leader)
 - **Nguyễn Quang Đức**
@@ -158,7 +158,7 @@ jupytext>=1.15.0  # For .py ↔ .ipynb sync
   
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -170,7 +170,7 @@ We welcome contributions! Please follow these steps:
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Data Source:** [World Bank Open Data](https://data.worldbank.org/)
 - **Libraries:** scikit-learn, XGBoost, pandas, matplotlib, seaborn
@@ -178,7 +178,7 @@ We welcome contributions! Please follow these steps:
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [x] Data collection and preprocessing
 - [x] Exploratory data analysis and data visualization
@@ -190,7 +190,7 @@ We welcome contributions! Please follow these steps:
 
 ---
 
-## 📚 References
+## References
 
 1. World Bank. (2024). *World Development Indicators*. https://data.worldbank.org/
 2. Scikit-learn Documentation. https://scikit-learn.org/stable/
