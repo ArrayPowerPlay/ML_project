@@ -8,6 +8,3 @@ visualization/
 
 # MacOS
 .DS_Store
-
-# Hugging Face token
-token.env
