@@ -1,4 +1,9 @@
+numpy
 pandas
-requests
-XlsxWriter
+matplotlib
+seaborn
+scikit-learn
+scipy
+lightgbm
 catboost
+joblib
