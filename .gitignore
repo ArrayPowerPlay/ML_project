@@ -3,8 +3,7 @@
 .idea/
 
 # Dữ liệu và file được tạo ra
-saved_models/
-visualization/
+training_models/catboost_info
 
 # MacOS
 .DS_Store
