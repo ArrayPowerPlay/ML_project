@@ -46,6 +46,7 @@ INDICATORS = {
     "SL.TLF.CACT.ZS": "Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)",
 }
 
+
 def get_all_countries(exclude_aggregates: bool = True) -> pd.DataFrame:
     """Tải danh sách các quốc gia từ API World Bank, tùy chọn loại trừ các khu vực tổng hợp."""
     url = "https://api.worldbank.org/v2/country"
@@ -79,6 +80,7 @@ def get_all_countries(exclude_aggregates: bool = True) -> pd.DataFrame:
     if df.empty:
         raise RuntimeError("Không thể lấy danh sách quốc gia từ API World Bank.")
     return df
+
 
 def fetch_indicator(ind_code: str, start: int, end: int, countries_df: pd.DataFrame) -> pd.DataFrame:
     """Tải dữ liệu cho một chỉ số cụ thể từ World Bank cho tất cả quốc gia trong khoảng năm."""
@@ -129,6 +131,7 @@ def fetch_indicator(ind_code: str, start: int, end: int, countries_df: pd.DataFr
     df = df.sort_values(["Country Code", "Year"]).drop_duplicates(["Country Code", "Year"], keep="last")
     return df[["Country Code", "Country Name", "Year", ind_code]]
 
+
 def build_dataset(start: int, end: int, include_aggregates: bool) -> pd.DataFrame:
     """Xây dựng bộ dữ liệu hoàn chỉnh bằng cách kết hợp dữ liệu từ tất cả các chỉ số."""
     # Lấy danh sách tất cả các quốc gia từ World Bank
@@ -163,13 +166,14 @@ def build_dataset(start: int, end: int, include_aggregates: bool) -> pd.DataFram
     df = df[ordered_cols].sort_values(["Country Code", "Year"]).reset_index(drop=True)
     return df
 
+
 def main():
     """Hàm chính: phân tích tham số dòng lệnh, xây dựng dataset, và xuất ra file."""
     ap = argparse.ArgumentParser(description="Xây dựng file Excel chứa các chỉ số kinh tế xã hội từ World Bank cho tất cả quốc gia, năm 2000–2024.")
     ap.add_argument("--start", type=int, default=DEFAULT_START, help="Năm bắt đầu (mặc định: 2000)")
     ap.add_argument("--end", type=int, default=DEFAULT_END, help="Năm kết thúc (mặc định: 2024)")
-    ap.add_argument("--out", type=str, default="worldbank_2000_2024.xlsx", help="Đường dẫn file Excel đầu ra")
-    ap.add_argument("--csv", type=str, default=None, help="Tùy chọn: đường dẫn file CSV đầu ra")
+    ap.add_argument("--out", type=str, default="data/worldbank_2000_2024.xlsx", help="Đường dẫn file Excel đầu ra")
+    ap.add_argument("--csv", type=str, default="data/worldbank_2000_2024.csv", help="Đường dẫn file CSV đầu ra (mặc định: data/worldbank_2000_2024.csv)")
     ap.add_argument("--include-aggregates", action="store_true", help="Bao gồm khu vực tổng hợp (mặc định: loại trừ)")
 
     args = ap.parse_args()
@@ -199,13 +203,13 @@ def main():
         except Exception:
             pass  # Bỏ qua lỗi điều chỉnh độ rộng cột nếu có
 
-    # Xuất dữ liệu ra file CSV nếu được yêu cầu
-    if args.csv:
-        print(f"[INFO] Đang ghi file CSV -> {args.csv}")
-        df.to_csv(args.csv, index=False)
+    # Xuất dữ liệu ra file CSV (mặc định luôn xuất)
+    print(f"[INFO] Đang ghi file CSV -> {args.csv}")
+    df.to_csv(args.csv, index=False)
 
     # Hiển thị thông tin hoàn thành
     print(f"[DONE] Tổng số dòng: {len(df):,} | Tổng số cột: {len(df.columns)}")
+
 
 if __name__ == "__main__":
     # Điểm vào chương trình
