@@ -25,28 +25,29 @@
 
 ## 🎯 Overview
 
-This project uses supervised learning to predict **life expectancy** based on demographic and socioeconomic indicators from the World Bank. We train multiple machine learning models on data from 2000-2023 and evaluate their performance by predicting life expectancy for 2024.
+This project uses supervised learning to predict **life expectancy** based on demographic and socioeconomic indicators from the World Bank. We train multiple machine learning models such as XGBoost, SVM, Random Forest,... to find the best model which can be generalized well in unseen test set.
 
 **Key Highlights:**
 - 📊 **200+ countries** analyzed
-- 📅 **24 years** of historical data (2000-2024)
-- 🤖 **6+ ML algorithms** compared
-- 🎯 **Weighted ensemble** for final predictions
+- 📅 **23 years** of historical data (2000-2023)
+- 🤖 **10+ ML algorithms** compared
 - 📈 **Comprehensive EDA** with visualizations
 
 ---
 
 ## 🔬 Problem Statement
 
-**Goal:** Predict life expectancy at birth for countries worldwide using demographic features.
+**Goal:** Predict life expectancy for countries worldwide using demographic features.
 
 **Type:** Supervised Learning (Regression)
 
 **Approach:**
-1. Train models on historical data (2000-2023)
-2. Tune hyperparameters using K-Fold Cross-Validation
-3. Evaluate models on 2024 data (unseen test set)
-4. Compare actual vs predicted life expectancy
+1. Preprocess data
+2. Data exploration and visualization
+3. Train models on training data
+4. Tune hyperparameters using K-Fold Cross-Validation using MAE as the main metric
+5. Evaluate models on validation test to choose the best model
+6. Testing the best model in unseen test set
 
 ---
 
@@ -54,9 +55,9 @@ This project uses supervised learning to predict **life expectancy** based on de
 
 ### Data Source
 - **World Bank Open Data** (https://data.worldbank.org/)
-- **Time Period:** 2000-2024
+- **Time Period:** 2000-2023
 - **Coverage:** 200+ countries
-- **Features:** 11 demographic and socioeconomic indicators
+- **Features:** 10+ demographic and socioeconomic indicators
 
 ### Features Used
 
@@ -74,11 +75,12 @@ This project uses supervised learning to predict **life expectancy** based on de
 | **CO2 emissions** | Carbon dioxide emissions per capita | t CO2e/capita |
 | **GDP growth** | Annual GDP growth rate | % |
 
-**Target Variable:** Life expectancy at birth (years)
+**Target Variable:** Life expectancy (years)
 
 ### Data Split
-- **Training + Validation:** 90% (years 2000-2023)
-- **Test Set:** 10% (year 2024)
+- **Training Set:** 60%
+- **Validation Set:** 20%
+- **Test Set:** 20%
 
 ---
 
